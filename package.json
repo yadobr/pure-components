@@ -1,0 +1,32 @@
+{
+  "name": "pure-components",
+  "author": "yadobr",
+  "version": "1.0.0",
+  "description": "PureComponents is a lightweight(16KB not gzipped), dependency-free JavaScript library for building reusable UI components",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadobr/pure-components"
+  },
+  "keywords": [
+    "Javascript",
+    "lightweight",
+    "ui-kit"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/yadobr/pure-components/issues"
+  },
+  "homepage": "https://github.com/yadobr/pure-components#readme",
+  "devDependencies": {
+    "@spiriit/vite-plugin-svg-spritemap": "^5.0.0",
+    "del": "^8.0.1",
+    "vite": "^7.1.6"
+  }
+}

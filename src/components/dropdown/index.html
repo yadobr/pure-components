@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Dropdown</title>
+    <meta charset="utf-8">
+    <link href="dropdown.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="dropdown">
+      <div class="dropdown__toggle">[Simple]</div>
+      <div class="dropdown__content">
+        <div style="width: 100px; height: 100px; background: red"></div>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="dropdown__toggle">[Simple 2]</div>
+      <div class="dropdown__content">
+        <div style="width: 100px; height: 100px; background: green"></div>
+      </div>
+    </div>
+    <div data-dropdown-offset-x="50" data-dropdown-offset-y="50" class="dropdown">
+      <div class="dropdown__toggle">[Offsets]</div>
+      <div class="dropdown__content">
+        <div style="width: 100px; height: 100px; background: blue"></div>
+      </div>
+    </div>
+    <div data-dropdown-custom-x="50" data-dropdown-custom-y="50" class="dropdown">
+      <div class="dropdown__toggle">[Custom X and Y]</div>
+      <div class="dropdown__content">
+        <div style="width: 100px; height: 100px; background: purple"></div>
+      </div>
+    </div>
+    <div data-dropdown-onopen="open" data-dropdown-onclose="close" class="dropdown">
+      <div class="dropdown__toggle">[Onopen and onclose]</div>
+      <div class="dropdown__content">
+        <div style="width: 100px; height: 100px; background: pink"></div>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="dropdown__toggle">[Simple 3]</div>
+      <div class="dropdown__content">
+        <div style="width: 100px; height: 100px; background: yellow">       </div>
+      </div>
+    </div><br><br>
+    <button onclick="var s = document.querySelector('#s'); s.style.display = (s.style.display) == 'none' ? 'block' : 'none';">Toggle page scrolling        </button><br><br>
+    <div style="position: relative; height: calc(100vh - 100px); border: 1px solid #999">
+      <div style="float: left;">
+        <div class="dropdown">
+          <div class="dropdown__toggle">[Left Top]</div>
+          <div class="dropdown__content">
+            <div style="width: 120px; height: 120px; background: red"></div>
+          </div>
+        </div>
+      </div>
+      <div style="float:right;">
+        <div class="dropdown">
+          <div class="dropdown__toggle">[Right Top]</div>
+          <div class="dropdown__content">
+            <div style="width: 120px; height: 120px; background: green"></div>
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute; left: calc(50% - 100px); top: calc(50% - 100px); width: 200px; height: 200px; background: gray; overflow: auto">
+        <div data-dropdown-offset-x="50" data-dropdown-offset-y="50" style="float: right" class="dropdown">
+          <div class="dropdown__toggle">[In scrollable]</div>
+          <div class="dropdown__content">
+            <div style="width: 120px; height: 120px; background: red"></div>
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute; left: 0; bottom: 0">
+        <div class="dropdown">
+          <div class="dropdown__toggle">[Left Bottom]</div>
+          <div class="dropdown__content">
+            <div style="width: 120px; height: 120px; background: blue"></div>
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute; right: 0;  bottom: 0">
+        <div class="dropdown">
+          <div class="dropdown__toggle">[Right Bottom]</div>
+          <div id="test" class="dropdown__content">
+            <div style="width: 120px; height: 120px; background: purple"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s" style="display: none">
+      <div id="vs" style="width: 20px; height: 2000px; background: green">Only for v-scrolling    </div>
+      <div id="hs" style="width: 2000px; height 20px; background: blue">Only for h-scrolling    </div>
+    </div>
+    <script src="dropdown.js"></script>
+    <script>
+      dropdown();
+      
+      function open() { alert('open'); }
+      function close() { alert('close'); }
+    </script>
+  </body>
+</html>

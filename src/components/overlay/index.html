@@ -1,0 +1,165 @@
+<!DOCTYPE html >
+<html>
+  <head>
+    <title>Overlay</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+    <link href="overlay.css" rel="stylesheet"/>
+    <link href="../text/text.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="toggles">
+      <button id="toggle1a">Show overlay 1</button>
+      <button id="toggle1b">Show overlay 1</button>
+      <div data-overlay-toggle="#toggle1a, #toggle1b" class="overlay"><img src="img/test.jpg" width="80%" style="display: block; margin: 0 auto; margin-top: 80px"/></div>
+      <button id="toggle2">Show overlay with offsets</button>
+      <div data-overlay-toggle="#toggle2" data-overlay-custom-x="50" data-overlay-custom-y="100" class="overlay"><img src="img/test.jpg" style="display: block; margin: 0 auto; margin-top: 80px"/></div>
+      <button id="toggle3">Show overlay with close button</button>
+      <div data-overlay-toggle="#toggle3" data-overlay-close="#close" class="overlay">
+        <button id="close">Close</button><br/><img src="img/test.jpg" style="display: block; margin: 0 auto; margin-top: 80px"/>
+      </div>
+      <button id="toggle4">Show overlay with scrollable content</button>
+      <div data-overlay-toggle="#toggle4" class="overlay">
+        <div style="margin: 10px; padding: 10px; background-color: #fff">
+          <p>1. Up. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>4. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>5. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>6. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>7. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>8. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>9. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>10. Down. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <button id="toggle5">Show overlay with sidebar and temporary css class(trigger when toggle clicked)</button>
+      <div data-overlay-toggle="#toggle5" data-overlay-close="#close5" data-overlay-temporary="overlay_noscroll" data-overlay-temporary-duration="550" class="overlay">
+        <div class="sidebar">
+          <button id="close5">close</button><br/>sidebar
+        </div>
+        <style>
+          .sidebar{ float: right; width: 300px; height: 100vh; background-color: #fff; animation: sidebar-right .5s; }
+          @keyframes sidebar-right {
+              from { margin-right: -100%; }
+              to   { margin-right: 0; }
+          }
+
+        </style>
+      </div>
+      <button class="multiple">Multiple selector. Button 1</button>
+      <button class="multiple">Multiple selector. Button 2</button>
+      <button id="multiple-button">Multiple selector. Button 3</button>
+      <div data-overlay-toggle=".multiple, #multiple-button" style="color: #fff" class="overlay">Several toggles for one overlay</div>
+    </div>
+    <!-- Тестовый контент-->
+    <div class="content">
+      <div class="post">
+        <div class="post__title">
+          <div class="text text_primary text_medium text_squeezed">Стипендия Фулбрайта: как и зачем?</div>
+        </div>
+        <div class="post__image"><img src="https://habrastorage.org/webt/5h/th/ws/5hthwsh3t36os2svbsvzgf841d8.png" width="100%"/></div>
+        <div class="post__text">
+          <div class="text">Здравствуйте, уважаемые хабровчане. Меня зовут Андрей, я химик из Киева, выигравший стипендию Фулбрайта FRDP. Сейчас я прохожу стажировку в штате Мичиган. В этой статье я хочу рассказать мой опыт подачи документов, собеседования и поездки.</div>
+        </div>
+      </div>
+      <div class="post">
+        <div class="post__title">
+          <div class="text text_primary text_medium text_squeezed">Репутация, работа и эмиграция: как использовать инструменты продвижения компаний для решения личных задач</div>
+        </div>
+        <div class="post__image"><img src="https://habrastorage.org/webt/kt/yy/tv/ktyytvsmqwup5gpxmbnilugqpg8.jpeg" width="100%"/></div>
+        <div class="post__text">
+          <div class="text">Ведение блогов, создание контента, работа со СМИ – это то, чем занимаются всё больше компаний. Но на самом деле подобные инструменты продвижения могут использоваться не только бизнесом для привлечения клиента, но и обычными людьми для профессионального развития.</div>
+        </div>
+      </div>
+      <div class="post">
+        <div class="post__title">
+          <div class="text text_primary text_medium text_squeezed">Личный опыт: Пять сложностей при запуске бизнеса в США</div>
+        </div>
+        <div class="post__image"><img src="https://habrastorage.org/webt/a6/su/cz/a6suczgg1msc0tw7nxvuxw-nufg.jpeg" width="100%"/></div>
+        <div class="post__text">
+          <div class="text">Вот уже пару лет я живу в США, развиваю два собственных проекта и сегодня решил поделиться опытом. Мне на глаза часто попадаются статьи с рассказами о том, как классно делать бизнес в США, авторы которых не рассказывают о возможных сложностях на этом пути. В итоге у многих может сложиться чересчур идеализированное представление о том, как они приедут в Кремниевую Долину со своим стартапом менять мир. </div>
+        </div>
+      </div>
+      <div class="post">
+        <div class="post__title">
+          <div class="text text_primary text_medium text_squeezed">Мой переезд в Норвегию</div>
+        </div>
+        <div class="post__image"><img src="https://habrastorage.org/webt/cq/xf/ju/cqxfju7smkpuq7oa-ecwqodwxgo.jpeg" width="100%"/></div>
+        <div class="post__text">
+          <div class="text">Я решил написать эту статью, потому что в интернете мало информации именно о переезде в Норвегию. Люди в основном описывают жизнь, процесс поиска работы и тому подобное. Ниже я постарался рассказать о подготовке документов, регистрации в стране, открытии банковского счёта, аренде квартиры и т.п. Надеюсь, это будет полезно.</div>
+        </div>
+      </div>
+      <div class="post">
+        <div class="post__title">
+          <div class="text text_primary text_medium text_squeezed">IT в Германии — как искать работу в крупных городах Германии</div>
+        </div>
+        <div class="post__image"><img src="https://habrastorage.org/webt/sf/ny/qp/sfnyqpx9u9iffdlp8hm5m7rhmw4.jpeg" width="100%"/></div>
+        <div class="post__text">
+          <div class="text">Уехать в Германию при наличии опыта работы в IT довольно просто, и множество статей на эту тему помогают определиться с выбором. Эта статья не будет исключением, в ней собраны истории 5х эмигрантов, которые поделились своим опытом работы в крупных городах Германии и рассказали, что нужно делать, чтобы найти работу и успешно продвигаться по карьерной лестнице.</div>
+        </div>
+      </div>
+      <div class="post">
+        <div class="post__title">
+          <div class="text text_primary text_medium text_squeezed">Переезд в австрийский социализм</div>
+        </div>
+        <div class="post__image"><img src="https://voyage-luxe.ru/wp-content/uploads/2016/12/513.jpg" width="100%"/></div>
+        <div class="post__text">
+          <div class="text">На Хабре часто пишут про эмиграцию в разные страны, а про Австрию ещё не было. Пора восполнить пробел. Я попробую описать мой опыт переезда в Австрию (в Вену), а также немного расскажу про особенности страны, которые я узнал за 6 лет проживания тут. </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      body {
+          margin: 0;
+      }
+
+      div {
+          box-sizing: border-box;
+      }
+
+      .content {
+          width: 900px;
+          min-height: calc(100vh - 90px);
+          margin: 90px auto 0 auto;
+          padding: 30px;
+          border-left: 1px solid #eaeaea;
+          border-right: 1px solid #eaeaea;
+      }
+
+      .post {
+          font-size: 0;
+          line-height: 0;
+          border-bottom: 1px solid #eaeaea;
+      }
+      .post + .post {
+          margin-top: 30px;
+      }
+
+      .post__title {
+          margin-bottom: 30px;
+      }
+
+      .post__image {
+          margin-bottom: 30px;
+      }
+
+      .post__text {
+          margin-bottom: 25px;
+      }
+
+      .toggles {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 90px;
+          background-color: #fff;
+          padding: 20px;
+          border-bottom: 1px solid #eaeaea;
+      }
+
+    </style>
+    <script src="overlay.js"></script>
+    <script>overlay();</script>
+  </body>
+</html>

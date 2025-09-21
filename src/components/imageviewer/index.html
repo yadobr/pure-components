@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ImageViewer</title>
+    <meta charset="utf-8">
+    <link href="viewer.css" rel="stylesheet">
+    <!-- Теги мета ниже, запрещают кэширование документа-->
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+  </head>
+  <body>
+    <img src="img/image.jpg" data-viewer-src="img/image.jpg">
+
+    <script src="zingtouch.js"></script>
+    <script src="cssanimation.js"></script>
+
+    <!-- Подключаем viewer.js таким образом, чтобы он не кэшировался       -->
+    <script>
+      var script = document.createElement('script');
+      script.src = 'viewer.js?nocache=' + new Date().getTime();
+      document.body.appendChild(script);
+
+      setTimeout(function()
+      {
+          viewer();
+      }, 300);
+    </script>
+  </body>
+</html>

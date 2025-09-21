@@ -1,0 +1,56 @@
+.overlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,7,10,0.9);
+  overflow: auto;
+  z-index: 999;
+  animation: fade-in 0.5s;
+  -webkit-overflow-scrolling: touch;
+}
+.overlay_active {
+  display: block;
+}
+.overlay_noscroll {
+  overflow: hidden;
+}
+.overlay__noscroll {
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}
+@-moz-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

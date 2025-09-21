@@ -1,0 +1,7 @@
+.tag {
+    height: 20px;
+    padding: 0 5px;
+    background-color: #d7dce0;
+    color: #747d84;
+    white-space: nowrap;
+}

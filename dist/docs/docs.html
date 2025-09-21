@@ -1,0 +1,882 @@
+<!-- Change html symbols < and > to mnemonic: https://snipp.ru/tools/mnemonic -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+
+    <!-- For image viewer component -->
+    <script src="./js/zingtouch.js"></script>
+    <script src="./js/cssanimation.js"></script>
+
+    <!-- For resizeable textarea -->
+    <script src="./js/autosize.min.js"></script>
+
+    <!-- Library styles -->
+    <link href="../pure-components.css" rel="stylesheet">
+
+    <!-- Styles of the docs page -->
+    <link href="./docs.css" rel="stylesheet" />
+
+    <title>Pure components</title>
+</head>
+<body data-theme="light">
+    <div class="layout">
+
+        <div class="layout__aside">
+            <div class="content">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Navigation</div>
+                </div>
+                <div class="content__section">
+                    <div class="list">
+                        <div class="list__item"><a class="text text_secondary text_link" href="#alert">Alert</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#avatar">Avatar</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#button">Button</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#content">Content</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#dropdown">Dropdown</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#elements">Elements</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#imageviewer">Image viewer</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#icon">Icon</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#input">Input</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#list">List</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#onbottom">Onbottom</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#overlay">Overlay</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#preloader">Preloader</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#sidebar">Sidebar</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#tabs">Tabs</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#text">Text</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#textarea">Textarea</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#up">Up</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout__main">
+
+            <!-- ELEMENTS -->
+            <div class="content content_elements" id="elements">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Elements</div>
+                </div>
+                <div class="content__section">
+                    <pre>
+                        <!--
+                        Базовый класс, от которого наследуются все блоки.
+                        Создает js-сущности всех элементов блока, доступные через: блок.__элемент
+                        При помощи методов receive и send позволяет обмениваться данными между блоками.
+
+                        1. Получает как аргумент конструктора элемент(Node), либо селектор элемента.
+                        2. Создает экземпляр класса для всех блоков этого типа на странице
+                        3. Регистрируем слоты и блоки, от которых они ждут сигнала
+                        4. Транслируем сигнал
+                        -->
+                        <code class="js">
+        // Base class from which all blocks inherit.
+        // Creates JS entities for all block elements, accessible via: block.__element
+        // Enables data exchange between blocks using the receive and send methods.
+        class Elements
+        {
+            // Receives an element (Node) or an element selector as a constructor argument
+            constructor( element ){}
+
+            // Creates an instance of the class for all blocks of this type on the page
+            static awake(){}
+
+            // Register slots and blocks from which they expect a signal
+            receive( params = {} ){}
+
+            // Broadcasting the signal
+            send( params = {} ){}
+        }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <!-- ALERT -->
+            <div class="content content_alert" id="alert">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Alert</div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <div class="alert alert_primary">
+                            <div class="text">Primary. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        </div>
+                        <div class="alert alert_secondary">
+                            <div class="text">Secondary. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        </div>
+                        <div class="alert alert_success">
+                            <div class="text">Success. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        </div>
+                        <div class="alert alert_warning">
+                            <div class="text">Warning. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        </div>
+                        <div class="alert alert_error">
+                            <div class="text">Error. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <pre>
+                            <code class="javascript">
+    // to run notification just call notification method
+    new PC.Alert().notification({ status: 0, message: 'text' });
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="content__row">
+                        <button class="button" onclick="new PC.Alert().notification({ status: 0, message: 'Hello world' })">Alert</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AVATAR -->
+            <div class="content content_avatar" id="avatar">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Avatar</div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <div class="avatar avatar_large" style="background-image: url(./img/avatar.png)"></div>
+                        <div class="avatar" style="background-image: url(./img/avatar.png)"></div>
+                        <div class="avatar avatar_small avatar_rounded" style="background-image: url(./img/avatar.png)"></div>
+                    </div>
+                    <div class="content__row">
+                        <div class="avatar avatar_large" style="background-color: #46545c">T</div>
+                        <div class="avatar" style="background-color: #46545c">T</div>
+                        <div class="avatar avatar_small" style="background-color: #46545c">T</div>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+    &lt;div class="avatar avatar_large" style="background-image: url(./img/avatar.png)"&gt;&lt;/div&gt;
+    &lt;div class="avatar" style="background-image: url(./img/avatar.png)"&gt;&lt;/div&gt;
+    &lt;div class="avatar avatar_small avatar_rounded" style="background-image: url(./img/avatar.png)"&gt;&lt;/div&gt;
+                            
+    &lt;div class="avatar avatar_large" style="background-color: #46545c"&gtT&lt;/div&gt
+    &lt;div class="avatar" style="background-color: #46545c"&gtT&lt;/div&gt
+    &lt;div class="avatar avatar_small" style="background-color: #46545c"&gtT&lt;/div&gt
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="content content_button" id="button">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Button</div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <div class="button">Button</div>
+                        <div class="button button_primary button_large">
+                            <div class="button__item">Button primary large</div>
+                        </div>
+                        <div class="button button_secondary button_loading">
+                            <div class="button__item">Button loading</div>
+                        </div>
+                        <div class="button button_outline button_small button_disabled">
+                            <div class="button__item">Button outline small disabled</div>
+                        </div>
+                        <div class="button button_outline button_small button_rounded">
+                            <div class="button__item">Button outline small rounded</div>
+                        </div>
+                    </div>
+                    <div class="content__row">
+                        <div class="button button_primary button_loading">
+                            <div class="button__item">Button primary loading</div>
+                        </div>
+                        <div class="button button_secondary button_loading">
+                            <div class="button__item">Button secondary loading</div>
+                        </div>
+                        <div class="button button_outline button_loading">
+                            <div class="button__item">Button outline loading</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+    &lt;div class=&quot;button&quot;&gt;Button&lt;/div&gt;
+    &lt;div class=&quot;button button_primary button_large&quot;&gt;
+        &lt;div class=&quot;button__item&quot;&gt;Button primary large&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;button button_secondary button_loading&quot;&gt;
+        &lt;div class=&quot;button__item&quot;&gt;Button loading&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;button button_outline button_small button_disabled&quot;&gt;
+        &lt;div class=&quot;button__item&quot;&gt;Button outline small disabled&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;button button_outline button_small button_rounded&quot;&gt;
+        &lt;div class=&quot;button__item&quot;&gt;Button outline small rounded&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;button button_primary button_loading&quot;&gt;
+    &lt;div class=&quot;button__item&quot;&gt;Button primary loading&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;button button_secondary button_loading&quot;&gt;
+        &lt;div class=&quot;button__item&quot;&gt;Button secondary loading&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;button button_outline button_loading&quot;&gt;
+        &lt;div class=&quot;button__item&quot;&gt;Button outline loading&lt;/div&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="content content_content" id="content">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Content</div>
+                </div>
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;div class=&quot;content__section&quot;&gt;
+                &lt;div class=&quot;content__row&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;content__row&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;content__section&quot;&gt;
+                &lt;div class=&quot;content__col&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;content__col&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <!-- DROPDOWN -->
+            <div class="content content_dropdown" id="dropdown">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Dropdown</div>
+                </div>
+                <div class="content__section">
+                    <div class="dropdown" data-dropdown-offset-y="10">
+                        <div class="dropdown__toggle button button_outline button_medium">
+                            <div class="button__item">Dropdown toggle</div>
+                        </div>
+                        <div class="dropdown__content">
+                            <div class="text">Dropdown content</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <pre>
+                            <code class="html">
+        &lt;div class=&quot;dropdown&quot;&gt;
+            &lt;div class=&quot;dropdown__toggle&quot;&gt;Dropdown toggle&lt;/div&gt;
+            &lt;div class=&quot;dropdown__content&quot;&gt;
+                &lt;div class=&quot;text&quot;&gt;Dropdown content&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="content__row">
+                        <pre>
+                            <code class="js">
+        // Executed for all elements with a class .dropdown
+        dropdown()
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IMAGE VIEWER -->
+            <div class="content content_icon" id="imageviewer">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Image viewer</div>
+                </div>
+                <div class="content__section">
+                    <img src="./img/image.jpg" data-viewer-src="./img/image.jpg" height="200">
+                </div>
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+
+        // Import vendor scripts
+        &lt;script src="./src/components/imageviewer/zingtouch.js"&gt;&lt;/script&gt;
+        &lt;script src="./src/components/imageviewer/cssanimation.js"&gt;&lt;/script&gt;
+
+        // Put img with data-viewer-src attribute
+        &lt;img src="image.jpg" data-viewer-src="image.jpg" height="200"&gt;
+
+        // Run script
+        &lt;script&gt;PC.viewer();&lt;/script&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <!-- ICON -->
+            <div class="content content_icon" id="icon">
+                <div class="content__section">
+                    <div class="content__row">
+                        <div class="text text_primary text_medium text_squeezed">Icon</div>
+                    </div>
+                    <div class="content__row">
+                        <div class="text text_squeezed">Svg icons works only on web-server due to cors-policy</div>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <svg class="icon icon_arrow"><use href="../assets/map.svg#sprite-arrow"></use></svg>
+                    <svg class="icon icon_bell"><use href="../assets/map.svg#sprite-bell"></use></svg>
+                    <svg class="icon icon_close"><use href="../assets/map.svg#sprite-close"></use></svg>
+                    <svg class="icon icon_comments"><use href="../assets/map.svg#sprite-comments"></use></svg>
+                    <svg class="icon icon_dots"><use href="../assets/map.svg#sprite-dots"></use></svg>
+                    <svg class="icon icon_loupe"><use href="../assets/map.svg#sprite-loupe"></use></svg>
+                    <svg class="icon icon_menu"><use href="../assets/map.svg#sprite-menu"></use></svg>
+                    <svg class="icon icon_plus"><use href="../assets/map.svg#sprite-plus"></use></svg>
+                    <svg class="icon icon_share"><use href="../assets/map.svg#sprite-share"></use></svg>
+                    <svg class="icon icon_fb"><use href="../assets/map.svg#sprite-fb"></use></svg>
+                    <!-- <svg class="icon icon_in"><use href="../assets/map.svg#sprite-in"></use></svg> -->
+                    <svg class="icon icon_tg"><use href="../assets/map.svg#sprite-tg"></use></svg>
+                    <svg class="icon icon_tw"><use href="../assets/map.svg#sprite-tw"></use></svg>
+                    <!-- <svg class="icon icon_vk"><use href="../assets/map.svg#sprite-vk"></use></svg> -->
+                </div>
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+    &lt;svg class=&quot;icon icon_arrow&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-arrow&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_bell&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-bell&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_close&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-close&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_comments&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-comments&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_dots&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-dots&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_loupe&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-loupe&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_menu&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-menu&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_plus&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-plus&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_share&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-share&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_fb&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-fb&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_tg&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-tg&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;svg class=&quot;icon icon_tw&quot;&gt;&lt;use href=&quot;../assets/map.svg#sprite-tw&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <!-- INPUT -->
+            <div class="content content_input" id="input">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Input and Select</div>
+                </div>
+                <div class="content__section">
+                    <div class="input input_editable" contenteditable="true">Div with text</div>
+                    <input class="input" value="Input with text">
+                    <input class="input" placeholder="Default state">
+                    <input class="input input_focused" placeholder="Focus">
+                    <input class="input input_required" placeholder="Required">
+                    <input class="input input_right" placeholder="Correct">
+                    <input class="input input_wrong" placeholder="Incorrect">
+                </div>
+                <div class="content__section">
+                    <div class="select">
+                        <select class="input">
+                            <option>Option #1</option>
+                            <option>Option #2</option>
+                            <option>Option #3</option>
+                            <option>Option #4</option>
+                            <option>Option #5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+    &lt;div class=&quot;input input_editable&quot; contenteditable=&quot;true&quot;&gt;Div with text&lt;/div&gt;
+    &lt;input class=&quot;input&quot; value=&quot;Input with text&quot;&gt;
+    &lt;input class=&quot;input&quot; placeholder=&quot;Default state&quot;&gt;
+    &lt;input class=&quot;input input_focused&quot; placeholder=&quot;Focus&quot;&gt;
+    &lt;input class=&quot;input input_required&quot; placeholder=&quot;Required&quot;&gt;
+    &lt;input class=&quot;input input_right&quot; placeholder=&quot;Correct&quot;&gt;
+    &lt;input class=&quot;input input_wrong&quot; placeholder=&quot;Incorrect&quot;&gt;
+
+    &lt;div class=&quot;select&quot;&gt;
+        &lt;select class=&quot;input&quot;&gt;
+            &lt;option&gt;Option #1&lt;/option&gt;
+            &lt;option&gt;Option #2&lt;/option&gt;
+            &lt;option&gt;Option #3&lt;/option&gt;
+            &lt;option&gt;Option #4&lt;/option&gt;
+            &lt;option&gt;Option #5&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                </div>
+
+            </div>
+
+            <!-- LIST -->
+            <div class="content content_list" id="list">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">List</div>
+                </div>
+                <div class="content__section"></div>
+                <div class="content__section" style="display: flex">
+                    <!-- STYLE ONLY FOR TEST -->
+                    <style>
+                        .layout__main .list {
+                            padding: 20px;
+                            border: 1px solid #eaeaea;
+                        }
+                    </style>
+                    <div class="list" style="width: 300px;">
+                        <div class="list__item list__item_single"><a class="text text_primary text_link" href="#">Brand</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Interesting</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">New</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Discussed</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Best</a></div>
+                        <div class="list__item list__item_single"><a class="text text_secondary text_link" href="#">Sign out</a></div>
+                    </div>
+                    <div class="list" style="width: 300px; margin-left: auto;">
+                        <div class="list__item">
+                            <a class="text text_secondary text_link" href="#">
+                                <div class="text text_primary">Username</div>
+                                <br>
+                                <div class="text text_secondary">Profile</div>
+                            </a>
+                        </div>
+                        <div class="list__item list__item_separator"></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Interesting</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">New</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Discussed</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Best</a></div>
+                        <div class="list__item list__item_separator"></div>
+                        <div class="list__item list__item_single"><a class="text text_secondary text_link" href="#">Sign out</a></div>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <div class="list list_horizontal">
+                        <div class="list__item list__item_single"><a class="text text_primary text_link" href="#">Brand</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Interesting</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">New</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Discussed</a></div>
+                        <div class="list__item"><a class="text text_secondary text_link" href="#">Best</a></div>
+                        <div class="list__item list__item_right">
+                            <div class="list list_horizontal" style="padding: 0; border:none">
+                                <div class="list__item list__item_single"><a class="text text_secondary text_link" href="#">Sigh out</a></div>
+                                <div class="list__item"><a class="text text_secondary text_link" href="#">Sign up</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+   &lt;div class=&quot;list&quot; style=&quot;width: 300px;&quot;&gt;
+        &lt;div class=&quot;list__item list__item_single&quot;&gt;&lt;a class=&quot;text text_primary text_link&quot; href=&quot;#&quot;&gt;Brand&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Interesting&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;New&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Discussed&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Best&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;list__item list__item_single&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Sign out&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+&lt;div class=&quot;list&quot; style=&quot;width: 300px; margin-left: auto;&quot;&gt;
+    &lt;div class=&quot;list__item&quot;&gt;
+        &lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;
+            &lt;div class=&quot;text text_primary&quot;&gt;Username&lt;/div&gt;
+            &lt;br&gt;
+            &lt;div class=&quot;text text_secondary&quot;&gt;Profile&lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item list__item_separator&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Interesting&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;New&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Discussed&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Best&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item list__item_separator&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item list__item_single&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Sign out&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+&lt;div class=&quot;list list_horizontal&quot;&gt;
+    &lt;div class=&quot;list__item list__item_single&quot;&gt;&lt;a class=&quot;text text_primary text_link&quot; href=&quot;#&quot;&gt;Brand&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Interesting&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;New&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Discussed&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Best&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item list__item_right&quot;&gt;
+        &lt;div class=&quot;list list_horizontal&quot; style=&quot;padding: 0; border:none&quot;&gt;
+            &lt;div class=&quot;list__item list__item_single&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Sigh out&lt;/a&gt;&lt;/div&gt;
+            &lt;div class=&quot;list__item&quot;&gt;&lt;a class=&quot;text text_secondary text_link&quot; href=&quot;#&quot;&gt;Sign up&lt;/a&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                        </code>
+                    </pre>
+                </div>
+
+            </div>
+
+            <!-- ONBOTTOM -->
+            <div class="content content_onbottom" id="onbottom">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Onbottom</div>
+                </div>
+                <div class="content__section">
+                    <pre>
+                        <!-- Функция вызывает callback, когда пользователь доскроллит до конца страницы. -->
+                        <code class="js">
+        // The function triggers a callback when the user scrolls to the bottom of the page
+        // Try it. See result in console
+        PC.onbottom( function(){ alert('Hello World!') } )
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <!-- OVERLAY -->
+            <div class="content content_onbottom" id="overlay">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Overlay</div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <div class="button button_outline button_medium" id="toggle">
+                            <div class="button__item">Show overlay</div>
+                        </div>
+                        <div class="overlay" data-overlay-toggle="#toggle" data-overlay-close="#overlay-close">
+                            <div id="overlay-close" style="height: 100%; display: flex; align-items: center; justify-content: center">
+                                <img src="./img/overlay.bmp" width="70%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content__row">
+                        <pre>
+                            <code class="html">
+            &lt;button id=&quot;toggle&quot;&gt;Show overlay&lt;/button&gt;
+            &lt;div class=&quot;overlay&quot; data-overlay-toggle=&quot;#toggle&quot;&gt;&lt;/div&gt;
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="content__row">
+                        <pre>
+                            <!-- Функция создает overlay для всех элементов с классом .overlay -->
+                            <code class="js">
+            // The function creates an overlay for all elements with the class .overlay
+            overlay();
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRELOADER -->
+            <div class="content" id="preloader">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Preloader</div>
+                </div>
+                <div class="content__section">
+                    <div class="preloader preloader_active">
+                        <div class="preloader__item"></div>
+                        <div class="preloader__item"></div>
+                        <div class="preloader__item"></div>
+                        <div class="preloader__item"></div>
+                        <div class="preloader__item"></div>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+    &lt;div class=&quot;preloader preloader_active&quot;&gt;
+        &lt;div class=&quot;preloader__item&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;preloader__item&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;preloader__item&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;preloader__item&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;preloader__item&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="content" id="sidebar">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Sidebar</div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <div class="button button_outline button_medium" id="toggle-sidebar">
+                            <div class="button__item">Show sidebar</div>
+                        </div>
+                    </div>
+                    <div class="content__row">
+                        <pre>
+                            <code class="html">
+        &lt;div class=&quot;button button_outline button_medium&quot; id=&quot;toggle-sidebar&quot;&gt;
+            &lt;div class=&quot;button__item&quot;&gt;Show sidebar&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;overlay&quot; data-overlay-toggle=&quot;#toggle-sidebar&quot;&gt;
+            &lt;div class=&quot;sidebar sidebar_left&quot;&gt;
+                &lt;div class=&quot;text&quot;&gt;Текст&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="content__row">
+                        <pre>
+                            <code class="js">
+        <!--
+        // Функция создает overlay для всех элементов с классом .overlay
+        // Overlay необходим для работы sidebar
+        -->
+        // The function creates an overlay for all elements with the .overlay class
+        // The overlay is necessary for the sidebar functionality
+        overlay();
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <div class="overlay" data-overlay-toggle="#toggle-sidebar">
+                        <div class="sidebar sidebar_left">
+                            <div class="text">Текст</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABS -->
+            <div class="content content_text" id="tabs">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Tabs</div>
+                </div>
+                <div class="content__section">
+                    <div class="tabs" id="tabs">
+                        <div class="tabs__head">
+                            <div class="tabs__tab">
+                                <div class="text text_link text_single">Tab 1</div>
+                            </div>
+                            <div class="tabs__tab">
+                                <div class="text text_link text_single">Tab 2</div>
+                            </div>
+                        </div>
+                        <div class="tabs__body" style="padding-top: 20px;">
+                            <div class="tabs__content">
+                                <div class="text text_link text_single">Content 1</div>
+                            </div>
+                            <div class="tabs__content">
+                                <div class="text text_link text_single">Content 2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <pre>
+                            <code class="html">
+        &lt;div class=&quot;tabs&quot; id=&quot;tabs&quot;&gt;
+            &lt;div class=&quot;tabs__head&quot;&gt;
+                &lt;div class=&quot;tabs__tab&quot;&gt;
+                    &lt;div class=&quot;text text_link text_single&quot;&gt;Tab 1&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;tabs__tab&quot;&gt;
+                    &lt;div class=&quot;text text_link text_single&quot;&gt;Tab 2&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tabs__body&quot; style=&quot;padding-top: 20px;&quot;&gt;
+                &lt;div class=&quot;tabs__content&quot;&gt;
+                    &lt;div class=&quot;text text_link text_single&quot;&gt;Content 1&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;tabs__content&quot;&gt;
+                    &lt;div class=&quot;text text_link text_single&quot;&gt;Content 2&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="content__row">
+                        <pre>
+                            <code class="js">
+        var tabs = new PC.Tabs('#tabs');
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEXT -->
+            <div class="content content_text" id="text">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Text</div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <div class="text text_primary">Text primary</div>
+                        <div class="text">Text</div>
+                        <div class="text text_secondary">Text secondary</div>
+                    </div>
+                    <div class="content__row">
+                        <div class="text text_link">Link</div>
+                        <div class="text text_secondary text_link">Link secondary</div>
+                    </div>
+                    <div class="content__row" style="background-color: antiquewhite">
+                        <div class="text text_squeezed">Text squeezed</div>
+                        <br>
+                        <div class="text text_squeezed">Text squeezed</div>
+                    </div>
+                    <div class="content__row">
+                        <div class="text text_largest">Text largest</div>
+                        <div class="text text_large">Text large</div>
+                        <div class="text text_medium">Text medium</div>
+                        <div class="text">Text normal</div>
+                        <div class="text text_small">Text small</div>
+                    </div>
+                    <div class="content__row">
+                        <div class="text text_largest">Lineheight<br>Lineheight</div>
+                        <div class="text text_large">Lineheight<br>Lineheight</div>
+                        <div class="text text_medium">Lineheight<br>Lineheight</div>
+                        <div class="text">Lineheight<br>Lineheight</div>
+                        <div class="text text_small">Lineheight<br>Lineheight</div>
+                    </div>
+                </div>
+
+                <div class="content__section">
+                    <pre>
+                        <code class="html">
+    &lt;div class=&quot;text text_primary&quot;&gt;Text primary&lt;/div&gt;
+    &lt;div class=&quot;text&quot;&gt;Text&lt;/div&gt;
+    &lt;div class=&quot;text text_secondary&quot;&gt;Text secondary&lt;/div&gt;
+
+    &lt;div class=&quot;text text_link&quot;&gt;Link&lt;/div&gt;
+    &lt;div class=&quot;text text_secondary text_link&quot;&gt;Link secondary&lt;/div&gt;
+
+    &lt;div class=&quot;text text_squeezed&quot;&gt;Text squeezed&lt;/div&gt;
+    &lt;div class=&quot;text text_squeezed&quot;&gt;Text squeezed&lt;/div&gt;
+
+    &lt;div class=&quot;text text_largest&quot;&gt;Text largest&lt;/div&gt;
+    &lt;div class=&quot;text text_large&quot;&gt;Text large&lt;/div&gt;
+    &lt;div class=&quot;text text_medium&quot;&gt;Text medium&lt;/div&gt;
+    &lt;div class=&quot;text&quot;&gt;Text normal&lt;/div&gt;
+    &lt;div class=&quot;text text_small&quot;&gt;Text small&lt;/div&gt;
+
+    &lt;div class=&quot;text text_largest&quot;&gt;Lineheight&lt;br&gt;Lineheight&lt;/div&gt;
+    &lt;div class=&quot;text text_large&quot;&gt;Lineheight&lt;br&gt;Lineheight&lt;/div&gt;
+    &lt;div class=&quot;text text_medium&quot;&gt;Lineheight&lt;br&gt;Lineheight&lt;/div&gt;
+    &lt;div class=&quot;text&quot;&gt;Lineheight&lt;br&gt;Lineheight&lt;/div&gt;
+    &lt;div class=&quot;text text_small&quot;&gt;Lineheight&lt;br&gt;Lineheight&lt;/div&gt;
+                        </code>
+                    </pre>
+                </div>
+
+            </div>
+
+            <!-- TEXTAREA -->
+            <div class="content content_text" id="textarea">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Textarea</div>
+                </div>
+                <div class="content__section">
+                    <textarea class="textarea" placeholder="Введите текст"></textarea>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <pre>
+                            <code class="html">
+    &lt;!-- For resizeable textarea --&gt;
+    &lt;script src=&quot;./js/autosize.min.js&quot;&gt;&lt;/script&gt;
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="content__row">
+                        <pre>
+                            <code class="html">
+    &lt;textarea class=&quot;textarea&quot; placeholder=&quot;Введите текст&quot;&gt;&lt;/textarea&gt;
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="content__row">
+                        <pre>
+                            <code class="js">
+    autosize( document.querySelectorAll( '.textarea' ) );
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UP -->
+            <div class="content" id="up">
+                <div class="content__section">
+                    <div class="text text_primary text_medium text_squeezed">Up</div>
+                </div>
+                <div class="content__section">
+                    <div class="content__row">
+                        <!-- Создает элемент, который при нажатии возвращает наверх -->
+                        <!-- Функция может принимать параметр "left" или "right". Определяет, с какой стороны отображать элемент -->
+                        <pre>
+                            <code class="js">
+    // Creates an element that, when clicked, scrolls to the top.
+    // The function can accept a string position parameter: "left" or "right". Determines which side to display the element on.
+    up();
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Library js-bundle -->
+    <script src="../pure-components.bundle.js"></script>
+
+    <!-- Syntax highlighting -->
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Docs js -->
+    <script>
+        window.onload = () => {
+            // Awake all .dropdown elements
+            PC.dropdown();
+
+            // Awake all .image-viewer elements
+            PC.viewer();
+
+            // See result in console when page scrolls down
+            PC.onbottom( function(){ console.log('onbottom works!') } );
+
+            // The function creates an overlay for all elements with the class .overlay
+            PC.overlay();
+
+            // Create a Tans instance
+            new PC.Tabs('#tabs');
+
+            // Make you textarea resizable
+            autosize( document.querySelectorAll( '.textarea' ) );
+
+            // Scroll to up button
+            PC.up('right');
+        }
+    </script>
+</body>
+</html>

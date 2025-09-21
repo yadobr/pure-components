@@ -1,0 +1,7 @@
+.idea
+node_modules
+old
+vite.config.js
+package-lock.json
+gulpfile.js
+git-справка.txt

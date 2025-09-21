@@ -1,0 +1,18 @@
+.alert-list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 30px;
+    left: calc(50% - 150px);
+    width: 450px;
+    z-index: 999;
+}
+
+.alert-list > div {
+    display: inline-flex;
+}
+
+.alert-list > div + div {
+    margin-top: 20px;
+}

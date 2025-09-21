@@ -1,0 +1,58 @@
+.text {
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+
+    /* Default size is normal */
+    font-size: 14px;
+    line-height: 18px;
+
+    /* Default role is default*/
+    font-weight: 400;
+    color: #222;
+}
+
+
+/* SIZES */
+.text_largest { font-size: 35px; line-height: 44px; } /* 25px высота заглавной буквы. Межстрочная высота 25px */
+.text_large   { font-size: 28px; line-height: 35px; } /* 20px высота заглавной буквы. Межстрочная высота 20px */
+.text_medium  { font-size: 21px; line-height: 26px; } /* 15px высота заглавной буквы. Межстрочная высота 15px */
+.text_normal  { font-size: 14px; line-height: 18px; } /* 10px высота заглавной буквы. Межстрочная высота 10px */
+.text_small   { font-size: 10px; line-height: 15px; } /* 7px  высота заглавной буквы. Межстрочная высота 8px при заглавных буквах. Две строки - 30px  */
+
+/* Однострочный текст. Высота строки равна высоте заглавной буквы */
+.text_single { line-height: 10px; position: relative; top: 1px; }
+.text_single.text_largest { line-height: 25px; top: 0px; }
+.text_single.text_large   { line-height: 20px; top: 0px; }
+.text_single.text_medium  { line-height: 15px; top: 0px; }
+.text_single.text_normal  { line-height: 10px; top: 1px; }
+.text_single.text_small   { line-height: 7px;  top: 0px; }
+
+/* Однострочный текст. То же самое, что и text_single, но сжатие идет за счет отрицательного margin-top и margin-bottom, поэтому высота строки не меняется(если текст может стать многострочным) */
+.text_squeezed { margin-top: -3px; margin-bottom: -5px;}
+.text_squeezed.text_medium  { margin-top: -4px; margin-bottom: -6px; }
+.text_squeezed.text_normal  { margin-top: -3px; margin-bottom: -5px; }
+
+/* ROLE */
+.text_primary   { font-weight: 500; color: #222; }    /* primary */
+.text_default   { font-weight: 400; color: #222; }    /* default */
+.text_secondary { font-weight: 400; color: #747d84; } /* secondary */
+
+
+/* TYPE */
+.text_link { cursor: pointer; }
+.text_link.text:hover, .text_link.text_primary:hover, .text_link.text_default:hover { color: #747d84; }
+.text_link.text_secondary:hover { color: #222; }
+
+
+/* MEDIA */
+@media (max-width: 500px) {
+    .text_primary {
+        font-weight: 700 !important;
+    }
+}
+/* @media (min-resolution: 401dpi) {
+    .text_primary {
+        font-weight: 700 !important;
+    }
+} */

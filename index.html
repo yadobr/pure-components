@@ -1,0 +1,19 @@
+<!-- You need to run this page on local web server that type="module" works -->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pure components</title>
+</head>
+<body data-theme="light">
+    <svg class="icon icon_arrow"><use href="/__spritemap#sprite-arrow"></use></svg>
+
+    <script type="module">
+        import { Alert } from  './src/index.js';
+        //
+        // new Alert().notification({ status: 0, message: 'Hello world!' });
+    </script>
+</body>
+</html>

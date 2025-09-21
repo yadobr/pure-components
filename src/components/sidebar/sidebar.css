@@ -1,0 +1,44 @@
+/* SIDEBAR */
+.sidebar {
+    display: block;
+    width: 75%;
+    max-width: 300px;
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-size: 0;
+}
+
+
+/* MODIFICATORS */
+.sidebar_left {
+    animation: sidebar-left .5s;
+}
+
+.sidebar_right {
+    float: right;
+    animation: sidebar-right .5s;
+}
+
+
+/* ELEMENTS */
+.sidebar__close {
+    cursor: pointer;
+}
+
+.sidebar__list {
+    margin-top: 30px;
+}
+
+/* ANIMATION */
+@keyframes sidebar-left {
+    from { margin-left: -100%; }
+    to   { margin-left: 0; }
+}
+
+@keyframes sidebar-right {
+    from { margin-right: -100%; }
+    to   { margin-right: 0; }
+}

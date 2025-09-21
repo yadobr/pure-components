@@ -1,0 +1,36 @@
+/* HORIZONTAL LIST */
+.hlist {
+    display: flex;
+    align-items: center;
+    
+    font-size: 0;
+    line-height: 0;
+}
+
+.hlist__item  {
+    display: block;
+    box-sizing: border-box;
+    
+    font-size: 0;
+    line-height: 0;
+}
+
+.hlist_10 .hlist__item + .hlist__item {
+    margin-left: 10px;
+}
+
+.hlist_20 .hlist__item + .hlist__item {
+    margin-left: 20px;
+}
+
+.hlist_30 .hlist__item + .hlist__item {
+    margin-left: 30px;
+}
+
+.hlist_40 .hlist__item + .hlist__item {
+    margin-left: 40px;
+}
+
+.hlist_50 .hlist__item + .hlist__item {
+    margin-left: 50px;
+}

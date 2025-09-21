@@ -1,0 +1,92 @@
+.input {
+    display: inline-block;
+    box-sizing: border-box;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none; /* REMOVE IOS INNER BOX SHADOW */
+
+    width: 100%;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid #eaeaea;
+    border-radius: 2px;
+    outline: none;
+
+    font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 18px;
+    text-decoration: none;
+    color: #222;
+
+    cursor: text;
+}
+
+.input::placeholder {
+    color: #747d84;
+    opacity: .5;
+}
+
+
+/* MODIFICATORS */
+.input_select {
+    line-height: normal;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5' viewBox='0 0 9 5'%3E%3Cpath id='Path_98_9_5' data-name='Path 98 9 5' d='M357,490v-.5l4.5-4.5,4.5,4.5v.5Z' transform='translate(366 490) rotate(180)' fill='rgba(116,125,132,0.7)'/%3E%3C/svg%3E%0A");
+    background-position-y: center;
+    background-position-x: calc(100% - 15px);
+}
+.input_select::after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 4.5px 5px 4.5px;
+    border-color: transparent transparent rgba(116, 125, 132, .7) transparent;
+}
+
+.input_focused, .input:focus {
+    border-color: #b2c3d3;
+    box-shadow: 0 0 0 1px #b2c3d3;
+}
+
+.input_required {
+    border-color: #FFBD73;
+    box-shadow: 0 0 0 1px #FFBD73;
+}
+
+.input_right {
+    border-color: #B6BF80;
+    box-shadow: 0 0 0 1px #B6BF80;
+}
+
+.input_wrong {
+	border-color: #F67D7D;
+    box-shadow: 0 0 0 1px #F67D7D;
+}
+
+
+/* Класс, который добавляется элементу с contenteditable="true". Так как у div и input почему-то разные padding */
+.input_editable {
+    padding: 11px 14px 0 14px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Стили ниже, убирают multiline у элемента с contenteditable=true */
+.input_editable[contenteditable="true"] br {
+    display:none;
+}
+.input_editable[contenteditable="true"] * {
+    display:inline;
+    white-space:nowrap;
+}
+
+
+/* DISABLE SAFARI AUTO ZOOM */
+@media (max-width: 500px) {
+	.input {
+		font-size: 16px !important;
+	}
+}

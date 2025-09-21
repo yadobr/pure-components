@@ -1,0 +1,39 @@
+.tabs {
+    font-size: 0;
+    line-height: 0;
+}
+
+.tabs__head {
+    display: flex;
+}
+
+.tabs__tab {
+    user-select: none;
+}
+
+.tabs__tab + .tabs__tab {
+    margin-left: 19px;
+}
+
+.tabs__body {
+
+}
+
+.tabs__content {
+    display: none;
+    animation: tab-fade-in .2s;
+}
+
+.tabs__content_active {
+    display: block;
+}
+
+
+@keyframes tab-fade-in {
+	from {
+		opacity: 0
+	}
+	to {
+		opacity: 1
+	}
+}

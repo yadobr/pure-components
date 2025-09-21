@@ -1,0 +1,114 @@
+.icon {
+    display: inline-block;
+    transition: fill 0.2s;
+    user-select: none;
+    -moz-user-select: -moz-none;
+}
+
+[class*=" icon_"] {
+    fill: #747d84;
+    opacity: .70;
+}
+
+[class*=" icon_"]:hover {
+    fill: #747d84;
+    opacity: 1;
+}
+
+.icon_menu {
+    width: 20px;
+    height: 15px;
+}
+.icon_triangle {
+    width: 9px;
+    height: 5px;
+    
+}
+.icon_loupe {
+    width: 16px;
+    height: 16px;
+}
+.icon_bell {
+    width: 16px;
+    height: 18px;
+}
+
+
+.icon_arrow {
+    width: 15px;
+    height: 15px;
+}
+.icon_next {
+    width: 15px;
+    height: 6px;
+}
+.icon_comments {
+    width: 15px;
+    height: 15px;
+}
+.icon_dots {
+    width: 20px;
+    height: 5px;
+}
+
+.icon_share {
+    width: 20px;
+    height: 15px;
+}
+
+.icon_close {
+    width: 15px;
+    height: 15px;
+}
+
+.icon_plus {
+    width: 15px;
+    height: 15px;
+}
+
+.icon_collapse {
+    width: 15px;
+    height: 15px;
+}
+
+
+.icon_tg {
+    width: 31px;
+    height: 23px;
+}
+.icon_fb {
+    width: 10px;
+    height: 16px;
+}
+.icon_tw {
+    width: 18px;
+    height: 16px;
+}
+.icon_vk {
+
+}
+
+
+/* ANIMATIONS */
+/* Убираем т.к. на iOS это мешает отловить click */
+/* .icon:active { animation: fade-in 1s } */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-out {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+	transform: scale(1.0);
+	opacity: 0;
+  }
+}
