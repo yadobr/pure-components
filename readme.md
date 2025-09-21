@@ -1,143 +1,74 @@
----
+# Pure Components
 
-# PureComponents
+A lightweight, high-performance, and dependency-free JavaScript + CSS library for building customizable user interfaces.
 
-A lightweight, dependency-free JavaScript library for building reusable UI components with pure JavaScript. PureComponents enables developers to create modular, performant components with minimal overhead, ideal for projects that don’t require heavy frameworks.
+[DEMO](https://yadobr.github.io/pure-components/docs/docs.html) page.
 
-## Features
+## Overview
 
-- **Lightweight & Dependency-Free**: Built with vanilla JavaScript, no external dependencies.
-- **Event Handling**: Supports dynamic interactions like scroll-to-bottom callbacks and overlays for `.overlay` elements.
-- **Flexible**: Easily integrates with existing DOM structures for seamless UI enhancements.
+**Pure Components** is designed for developers who value simplicity, speed, and flexibility. This library provides a collection of UI components built with pure(vanilla) JavaScript and minimal CSS, ensuring fast performance and easy styling.
+
+### Key Features
+- **Lightweight**: 16KB(no gzipped)
+- **No Dependencies**: Built with pure JavaScript and CSS
+- **Minimal Styling**: Easy customization without overriding bloated styles
+- **High Performance**: Minimal code and zero dependencies enable the library to perform with height speed
+
 
 ## Installation
 
-Install PureComponents via npm:
+You can include Pure Components in your project via CDN or by downloading the library files.
 
-```bash
-npm install pure-components
-```
+[//]: # (### Via CDN)
 
-Or include it directly in your HTML via a CDN (if available, e.g., unpkg):
+[//]: # (```html)
 
+[//]: # (<link rel="stylesheet" href="https://cdn.example.com/pure-components/latest/pure-components.min.css">)
+
+[//]: # (<script src="https://cdn.example.com/pure-components/latest/pure-components.min.js"></script>)
+
+[//]: # (```)
+
+### Via Download
+1. Download the latest release from the [releases page](https://github.com/yadobr/pure-components/releases/) (replace with your actual link).
+2. Include the CSS and JavaScript files in your project:
 ```html
-<script src="https://unpkg.com/pure-comps@latest/dist/pure-components.umd.js"></script>
+<link rel="stylesheet" href="./pure-components.css">
+<script src="./pure-components.bundle.js"></script>
 ```
 
-## Dev mode
+## Components
 
-```bash
-npm run dev
-```
+Pure Components includes a variety of UI components, such as:
+- Buttons
+- Alerts
+- Modals
+- Dropdowns
+- And more!
 
-## Build
+Check the [documentation](https://yadobr.github.io/pure-components/docs/docs.html) for a full list and detailed usage instructions.
 
-```bash
-npm run buld
-```
+[//]: # (## Usage)
 
-## Usage
+[//]: # ()
+[//]: # (Pure Components is designed to be intuitive and easy to use. Below is an example of creating a simple button component.)
 
-### 1. Creating a Component
+[//]: # ()
+[//]: # (```html)
 
-PureComponents creates component instances for all blocks of a specified type on the page.
+[//]: # (<button class="button">Button</button>)
 
-```javascript
-import { PureComponents } from 'pure-comps';
-
-// Initialize a component for elements with class 'my-block'
-const myBlock = new PureComponents('.my-block');
-```
-
-Or pass a DOM node directly:
-
-```javascript
-const element = document.querySelector('.my-block');
-const myBlock = new PureComponents(element);
-```
-
-### 2. Data Exchange Between Components
-
-Register slots and blocks to enable signal-based communication:
-
-```javascript
-// Register a slot to listen for signals
-myBlock.registerSlot('mySlot', (data) => {
-  console.log('Received data:', data);
-});
-
-// Send data to another block
-otherBlock.send('mySlot', { message: 'Hello from PureComponents!' });
-```
-
-### 3. Scroll-to-Bottom Callback
-
-Trigger a callback when the user scrolls to the bottom of the page:
-
-```javascript
-PureComponents.onScrollEnd(() => {
-  console.log('Reached the bottom of the page!');
-});
-```
-
-### 4. Adding Overlays
-
-Create overlays for elements with the `.overlay` class:
-
-```javascript
-PureComponents.createOverlay(); // Applies overlay to all .overlay elements
-```
-
-### Example
-
-```html
-<div class="my-block">My Component</div>
-<div class="overlay">Overlay Content</div>
-
-<script type="module">
-  import { PureComponents } from 'pure-comps';
-
-  const block = new PureComponents('.my-block');
-  block.registerSlot('dataSlot', (data) => console.log(data));
-  PureComponents.onScrollEnd(() => console.log('Scrolled to bottom!'));
-  PureComponents.createOverlay();
-</script>
-```
-
-## API Reference
-
-- `new PureComponents(elementOrSelector)`: Creates a component instance for a DOM node or selector.
-- `registerSlot(slotName, callback)`: Registers a slot to receive signals.
-- `send(slotName, data)`: Sends data to registered slots.
-- `onScrollEnd(callback)`: Triggers a callback when scrolling to the page's end.
-- `createOverlay()`: Adds overlays to all elements with the `.overlay` class.
-
-## Contributing
-
-We welcome contributions! To get started:
-
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b my-feature`.
-3. Commit your changes: `git commit -m 'Add new feature'`.
-4. Push to the branch: `git push origin my-feature`.
-5. Open a Pull Request.
-
-Please ensure your code follows the project's coding style and includes tests.
+[//]: # (```)
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for more details.
+Pure Components is licensed under the [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
-## Contact
+[//]: # (## Support)
 
-For issues or suggestions, open an issue on [GitHub](https://github.com/your-username/pure-comps) or reach out on [X](https://x.com/your-profile).
+[//]: # ()
+[//]: # (For issues, feature requests, or questions, please open an issue on our [GitHub Issues page]&#40;#&#41; &#40;replace with your actual link&#41;.)
 
 ---
 
-### Notes
-- Replace `your-username` and `your-profile` with your actual GitHub username and X handle.
-- If you plan to publish to a CDN, ensure you host the UMD build on a service like unpkg or jsDelivr and update the CDN link.
-- If your project has specific build instructions or additional dependencies, add them to the `README.md`.
-- You can expand the API Reference section with more methods as your library grows.
-
-Let me know if you need adjustments or additional sections (e.g., a "Development Setup" section for contributors)!
+Build fast, lightweight, and customizable UIs with **Pure Components**!
