@@ -71,4 +71,4 @@ Pure Components is licensed under the [Apache-2.0](https://www.apache.org/licens
 
 ---
 
-Build fast, lightweight, and customizable UIs with **Pure Components**!
+Build pure, fast, and lightweight UIs with **Pure Components**!
